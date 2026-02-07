@@ -1,0 +1,82 @@
+[
+  {
+    "file": "./structs/datetime.cpp",
+    "arguments": [
+      "g++",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-I.",
+      "-O2",
+      "./structs/datetime.cpp",
+      "-o",
+      "dist/index"
+    ],
+    "directory": "/Users/memeonlymellc/learn-c/source-codes/learning-c-loop-on-big-data",
+    "output": "dist/index"
+  },
+  {
+    "file": "./helpers/prepare.cpp",
+    "arguments": [
+      "g++",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-I.",
+      "-O2",
+      "./helpers/prepare.cpp",
+      "-o",
+      "dist/index"
+    ],
+    "directory": "/Users/memeonlymellc/learn-c/source-codes/learning-c-loop-on-big-data",
+    "output": "dist/index"
+  },
+  {
+    "file": "./helpers/toTimestamp.cpp",
+    "arguments": [
+      "g++",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-I.",
+      "-O2",
+      "./helpers/toTimestamp.cpp",
+      "-o",
+      "dist/index"
+    ],
+    "directory": "/Users/memeonlymellc/learn-c/source-codes/learning-c-loop-on-big-data",
+    "output": "dist/index"
+  },
+  {
+    "file": "./services/datetime/datetime.cpp",
+    "arguments": [
+      "g++",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-I.",
+      "-O2",
+      "./services/datetime/datetime.cpp",
+      "-o",
+      "dist/index"
+    ],
+    "directory": "/Users/memeonlymellc/learn-c/source-codes/learning-c-loop-on-big-data",
+    "output": "dist/index"
+  },
+  {
+    "file": "./index.cpp",
+    "arguments": [
+      "g++",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-I.",
+      "-O2",
+      "./index.cpp",
+      "-o",
+      "dist/index"
+    ],
+    "directory": "/Users/memeonlymellc/learn-c/source-codes/learning-c-loop-on-big-data",
+    "output": "dist/index"
+  }
+]
