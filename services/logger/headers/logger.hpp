@@ -10,7 +10,9 @@ public:
     void info(const std::string message);
 
 private:
-    std::string getFormattedMessage();
+    std::string prefix;
+    std::string getFormattedMessage(enums::Level severity,
+                                    const std::string message);
     std::string getTime();
     std::string getLevel(enums::Level severity);
     std::string getPrefix();

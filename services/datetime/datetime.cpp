@@ -1,69 +1,63 @@
-#include <string>
 #include <ctime>
 #include <iomanip>
 #include <sstream>
+#include "services/datetime/headers/datetime.hpp"
 
 namespace services {
-class DateTime {
-public:
-    std::tm datetime;
-
-    DateTime(const std::string& seed = "") {
-        if (!seed.empty()) {
-            std::tm tm = {};
-            std::istringstream stream(seed);
-            stream >> std::get_time(&tm, "%Y-%m-%d %H:%M:%S");
-            datetime = tm;
-        }
-
-        std::time_t now = std::time(nullptr);
-        datetime = *std::localtime(&now);
+DateTime::DateTime(const std::string &seed) {
+    if (!seed.empty()) {
+        std::tm tm = {};
+        std::istringstream stream(seed);
+        stream >> std::get_time(&tm, "%Y-%m-%d %H:%M:%S");
+        datetime = tm;
     }
 
-    void addDays(int days) {
-        datetime.tm_mday += days;
-        refresh();
-    }
+    std::time_t now = std::time(nullptr);
+    datetime = *std::localtime(&now);
+}
 
-    void addMinutes(int minutes) {
-        datetime.tm_min += minutes;
-        refresh();
-    }
+void DateTime::addDays(int days) {
+    datetime.tm_mday += days;
+    refresh();
+}
 
-    void addSeconds(int seconds) {
-        datetime.tm_sec += seconds;
-        refresh();
-    }
+void DateTime::addMinutes(int minutes) {
+    datetime.tm_min += minutes;
+    refresh();
+}
 
-    float getTimestamp() {
-        return std::mktime(&datetime);
-    }
+void DateTime::addSeconds(int seconds) {
+    datetime.tm_sec += seconds;
+    refresh();
+}
 
-    std::string getFormatted(const std::string format = "%Y-%m-%d %H:%M:%S") {
-        std::ostringstream stream;
-        stream << std::put_time(&datetime, format.c_str());
-        return stream.str();
-    }
+float DateTime::getTimestamp() {
+    return std::mktime(&datetime);
+}
 
-    int getDay() {
-        return datetime.tm_mday;
-    }
+std::string DateTime::getFormatted(const std::string format) {
+    std::ostringstream stream;
+    stream << std::put_time(&datetime, format.c_str());
+    return stream.str();
+}
 
-    int getHour() {
-        return datetime.tm_hour;
-    }
+int DateTime::getDay() {
+    return datetime.tm_mday;
+}
 
-    int getMinute() {
-        return datetime.tm_min;
-    }
+int DateTime::getHour() {
+    return datetime.tm_hour;
+}
 
-    int getSecond() {
-        return datetime.tm_sec;
-    }
+int DateTime::getMinute() {
+    return datetime.tm_min;
+}
 
-private:
-    void refresh() {
-        std::mktime(&datetime);
-    }
-};
+int DateTime::getSecond() {
+    return datetime.tm_sec;
+}
+
+void DateTime::refresh() {
+    std::mktime(&datetime);
+}
 }

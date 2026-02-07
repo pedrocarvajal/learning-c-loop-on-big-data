@@ -1,47 +1,40 @@
 #include <iostream>
+#include "services/logger/headers/logger.hpp"
 #include "services/logger/consts/color.hpp"
-#include "services/logger/enums/level.hpp"
 #include "services/datetime/headers/datetime.hpp"
 
 namespace services {
-class Logger {
-private:
-    std::string prefix;
+Logger::Logger(const std::string prefix) {
+    this->prefix = prefix;
+}
 
-public:
-    Logger(const std::string prefix = "") {
-        this->prefix = prefix;
-    }
+void Logger::info(const std::string message) {
+    std::cout << getFormattedMessage(enums::Level::INFO, message);
+}
 
-    void info(const std::string message) {
-        std::cout << getFormattedMessage(enums::Level::INFO, message);
-    }
+std::string Logger::getFormattedMessage(
+    enums::Level severity,
+    const std::string message
+    ) {
+    return getTime() + " " + getLevel(severity) + " " + getPrefix() + " > " + message;
+}
 
-private:
-    std::string getFormattedMessage(
-        enums::Level severity,
-        const std::string message
-        ) {
-        return getTime() + getLevel(severity) + getPrefix() + " > " + message;
-    }
+std::string Logger::getTime() {
+    DateTime now;
+    return "[" + now.getFormatted() + "]";
+}
 
-    std::string getTime() {
-        DateTime now;
-        return "[" + now.getFormatted() + "]";
-    }
+std::string Logger::getLevel(enums::Level severity) {
+    if (severity == enums::Level::INFO)
+        return consts::color::WHITE + "[INFO]" + consts::color::RESET;
 
-    std::string getLevel(enums::Level severity) {
-        if (severity == enums::Level::INFO)
-            return consts::color::WHITE + "[INFO]" + consts::color::RESET;
+    return "";
+}
 
-        return "";
-    }
+std::string Logger::getPrefix() {
+    if (!prefix.empty())
+        return "[" + prefix + "]";
 
-    std::string getPrefix() {
-        if (!prefix.empty())
-            return "[" + prefix + "]";
-
-        return "";
-    }
-};
+    return "";
+}
 }

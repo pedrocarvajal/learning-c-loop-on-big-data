@@ -2,4 +2,5 @@
 
 int main() {
     services::Logger logger("index");
+    logger.info("Hello world...");
 }
