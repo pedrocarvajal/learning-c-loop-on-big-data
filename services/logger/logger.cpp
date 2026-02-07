@@ -16,7 +16,8 @@ std::string Logger::getFormattedMessage(
     enums::Level severity,
     const std::string message
     ) {
-    return getTime() + " " + getLevel(severity) + " " + getPrefix() + " > " + message;
+    return getTime() + " " + getLevel(severity) + " " + getPrefix() + " > " +
+           message;
 }
 
 std::string Logger::getTime() {
